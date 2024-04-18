@@ -51,7 +51,7 @@
           if (this.classList.contains("kot1"))  url = 'kotik1.html'; 
           else if (this.classList.contains("kot2")) url = 'kotik2.html';// Если в сss классах кнопки написано kot2 то вызвать kotik2.html
           else if (this.classList.contains("kot3")) url = 'kotik3.html';
-          fetch(url).then(response => response.text()).then(html => prokot.innerHTML = html)).catch(err =>  alert("Ошибка HTTP: "));
+          fetch(url).then(response => response.text()).then(html => prokot.innerHTML = html).catch(err =>  alert("Ошибка HTTP: "));
       }
   </script>
 </head>
