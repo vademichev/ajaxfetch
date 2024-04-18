@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="pragma" content="no-cache" />
+  <meta http-equiv="expires" content="0" />
+  <title>Ajax</title>
+  <style>
+	body{
+		text-align: center;
+		font-size:40px;
+	}
+ .button {
+  font-size:15px;
+  font-family:Arial;
+  width:140px;
+  height:50px;
+  border-width:1px;
+  color:#fff;
+  border-color:#337bc4;
+  font-weight:bold;
+  border-top-left-radius:5px;
+  border-top-right-radius:5px;
+  border-bottom-left-radius:5px;
+  border-bottom-right-radius:5px;
+  box-shadow: 3px 4px 0px 0px #1564ad;
+  text-shadow: 0px 1px 0px #528ecc;
+  background:linear-gradient(#79bbff, #378de5);
+}
+
+.button:hover {
+  background: linear-gradient(#378de5, #79bbff);
+}
+  </style>
+  <script>
+  let prokot; 
+      window.onload=function(){
+          let kot1=document.querySelector(".kot1");
+          kot1.onclick=LoadKot;
+          let kot2=document.querySelector(".kot2");
+          kot2.onclick=LoadKot;
+          let kot3=document.querySelector(".kot3");
+          kot3.onclick=LoadKot;
+          prokot = document.querySelector(".prokotikov");
+      }
+      async function LoadKot()
+      {
+          let url="";
+          if (this.classList.contains("kot1"))  url = 'http://f0598725.xsph.ru/index.html';
+          else if (this.classList.contains("kot2")) url = 'kotik2.html';
+          else if (this.classList.contains("kot3")) url = 'kotik3.html';
+          let response = await fetch(url);
+          if (response.ok) { // если HTTP-статус в диапазоне 200-299
+                 // получаем тело ответа (см. про этот метод ниже)
+                let html = await response.text(); 
+                prokot.innerHTML = html;
+            } else {
+                alert("Ошибка HTTP: " + response.status);
+            }
+      }
+  </script>
+</head>
+ <body>
+	<div class="button kot1">Загрузить котика 1</div>
+	<br>
+	<div class="button kot2">Загрузить котика 2</div>
+	<br>
+	<div class="button kot3">Загрузить котика 3</div>
+	
+	<div class="prokotikov"></div>
+ </body>
+ </html>
+ 
